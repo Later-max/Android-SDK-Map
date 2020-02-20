@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/transtmode_press" android:state_checked="true">
+    </item>
+    <item android:drawable="@drawable/transtmode_normal" android:state_selected="false">
+    </item>
+    <item android:drawable="@drawable/transtmode_press" android:state_selected="true">
+    </item>
+
+</selector>

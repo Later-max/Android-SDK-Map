@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/driver_name"
+        android:title="用户名"/>
+    <item
+        android:id="@+id/driver_car"
+        android:title="车辆信息"/>
+    <item
+        android:id="@+id/driver_history"
+        android:title="历史订单"/>
+    <item
+        android:id="@+id/driver_wallet"
+        android:title="我的钱包"/>
+    <item
+        android:id="@+id/driver_more_information"
+        android:title="更多信息"/>
+
+</menu>

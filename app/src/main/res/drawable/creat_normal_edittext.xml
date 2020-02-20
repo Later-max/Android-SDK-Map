@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:shape="rectangle">
+    <!-- Corner的属性是设置圆角的半径的 -->
+    <corners
+        android:bottomLeftRadius="8dp"
+        android:bottomRightRadius="8dp"
+        android:topLeftRadius="8dp"
+        android:topRightRadius="8dp" />
+    <!-- Button里面的文字与Button边界的间隔 -->
+    <padding
+        android:bottom="11dp"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="11dp" />
+
+    <solid android:color="#33FCFCFC" />
+
+    <stroke
+        android:width="1dip"
+        android:color="#757575" />
+
+</shape>

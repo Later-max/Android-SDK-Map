@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.baidu.mapapi.map.TextureMapView
+        android:id="@+id/mTexturemap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.baidu.mapapi.map.TextureMapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <!-- 顶部导航栏 -->
+
+        <RelativeLayout
+            android:id="@+id/customer_a_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FCFCFC"
+            android:padding="5dp" >
+
+            <ImageButton
+                android:id="@+id/my_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/customer_back"
+                android:src="@drawable/transparent_mask" />
+
+            <TextView
+                android:id="@+id/customer_city"
+                style="@style/customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/findroute"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/findroute_select"
+                android:padding="5dp"
+                android:text="出发"
+                android:textColor="#F2F2F2"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <!-- 起点终点输入 -->
+
+            <LinearLayout
+                android:id="@+id/guide_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangle_radius_fen"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:id="@+id/edit_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_radius_fen"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/creat_normal_edittext"
+                        android:drawableLeft="@drawable/radio_red"
+                        android:drawablePadding="5dp"
+                        android:maxLines="1"
+                        android:textColor="#303030"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/creat_normal_edittext"
+                        android:drawableLeft="@drawable/radio_blue"
+                        android:drawablePadding="5dp"
+                        android:hint="您要去哪儿"
+                        android:maxLines="1"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <!-- 导航方式 -->
+
+                <LinearLayout
+                    android:id="@+id/choosemode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FCFCFC"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/go_driver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/transtmode_select"
+                        android:gravity="center"
+                        android:onClick="searchButtonProcess"
+                        android:padding="5dp"
+                        android:text="驾车"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/go_bike"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/transtmode_select"
+                        android:gravity="center"
+                        android:onClick="searchButtonProcess"
+                        android:padding="5dp"
+                        android:text="骑行"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/go_bus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/transtmode_select"
+                        android:gravity="center"
+                        android:onClick="searchButtonProcess"
+                        android:padding="5dp"
+                        android:text="公交"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/go_walk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/transtmode_select"
+                        android:gravity="center"
+                        android:onClick="searchButtonProcess"
+                        android:padding="5dp"
+                        android:text="步行"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 智能推荐地点 -->
+
+            <ListView
+                android:id="@+id/search_end"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/guide_layout"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#FCFCFC"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/poilayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FCFCFC"
+                android:orientation="horizontal" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchpoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/rectangle_radius_fen"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/radio_blue"
+                    android:hint="搜索周边"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/customer_find_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_icon"
+                    android:src="@drawable/transparent_mask" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/change"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/poilayout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/luopan_seclect" />
+
+            <ImageButton
+                android:id="@+id/officient"
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/poilayout"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/official"
+                android:src="@drawable/transparent_mask" />
+
+            <LinearLayout
+                android:id="@+id/locationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rectangle_radius_fen"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/findroute2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/findroute_select"
+                    android:text="出发"
+                    android:textColor="#F2F2F2"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/mylocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="位置"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/click_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rectangle_radius_fen"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/endlocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/go_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/go_button"
+                    android:onClick="searchButtonProcess"
+                    android:text="现在前往" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>
